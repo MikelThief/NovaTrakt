@@ -17,6 +17,7 @@ NovaTrakt provides all of your GPS Video information in one simple window, with 
 ## Table of contents
 - [Features](#features)
 - [About NovaTrakt](#about-novatrakt)
+- [Changelog](#changelog)
 - [System Requirements](#system-requirements)
 - [Installation](#installation)
 - [Frequently Asked Questions](#frequently-asked-questions)
@@ -45,6 +46,11 @@ NovaTrakt was initially released as a way of extracting the data into a GPX file
 
 
 ----
+## Changelog
+All notable changes to this project will be documented in [CHANGELOG.md](CHANGELOG.md).
+
+
+----
 ## System Requirements
 - Windows 7 or higher, 32-bit or 64-bit
 - Microsoft .NET Framework 4.5.2 or higher
@@ -53,7 +59,7 @@ NovaTrakt was initially released as a way of extracting the data into a GPX file
 
 ----
 ## Installation
-Simply download the latest setup file and follow the on-screen prompts.
+Simply download the [latest setup file](Downloads/NovaTrakt-3.1.0.19070_setup.exe) and follow the on-screen prompts.
 
 
 ----
