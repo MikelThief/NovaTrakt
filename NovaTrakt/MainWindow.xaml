@@ -1,0 +1,52 @@
+﻿<Controls:MetroWindow x:Class="NovaTrakt.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                      xmlns:local="clr-namespace:NovaTrakt"
+                      xmlns:ViewModel="clr-namespace:NovaTrakt.ViewModel"
+                      xmlns:View="clr-namespace:NovaTrakt.View"
+                      mc:Ignorable="d"
+                      TextElement.FontWeight="Medium"
+                      TextElement.FontSize="14"
+                      FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+                      Title="NovaTrakt" 
+                      BorderBrush="{DynamicResource AccentColorBrush}"
+                      BorderThickness="1"
+                      WindowStartupLocation="CenterScreen" 
+                      TitleCaps="False" 
+                      TitleCharacterCasing="Normal" 
+                      MinWidth="350" 
+                      MinHeight="500" 
+                      WindowState="Maximized"
+                      WindowButtonCommandsOverlayBehavior="Never">
+
+    <Window.Resources>
+        <!-- NovaTrakt ViewModels -->
+        <DataTemplate DataType="{x:Type ViewModel:HomeViewModel}">
+            <View:HomeView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:LogViewModel}">
+            <View:LogView />
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding SelectInputFolder}"/>
+        <KeyBinding Key="F4" Modifiers="Alt" Command="{Binding Exit}"/>
+    </Window.InputBindings>
+
+    <Controls:MetroWindow.Flyouts>
+        <Controls:FlyoutsControl>
+            <Controls:Flyout Header="Settings" Theme="Accent" Position="Right" Width="350" x:Name="settingsFlyout">
+                <View:SettingsFlyout Padding="20"/>
+            </Controls:Flyout>
+        </Controls:FlyoutsControl>
+    </Controls:MetroWindow.Flyouts>
+
+    <Grid>
+        <UserControl Content="{Binding CurrentPageViewModel}" />
+    </Grid>
+</Controls:MetroWindow>

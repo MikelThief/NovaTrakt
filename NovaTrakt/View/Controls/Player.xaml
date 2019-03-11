@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="NovaTrakt.View.Controls.Player"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovaTrakt.View.Controls"
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <!-- This style is used for buttons, to remove the WPF default 'animated' mouse over effect -->
+        <Style x:Key="TransparentButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Transparent"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="Black">
+            <MediaElement Name="ntMediaPlayer"
+                          Source="{Binding SelectedTrip.CurrentClip.FullNameAndPath}" 
+                          LoadedBehavior="Manual" 
+                          ScrubbingEnabled="True"
+                          Volume="1"
+                          MediaOpened="ntMediaPlayer_MediaOpened"/>
+            <MediaElement Name="ntMediaPlayerB"
+                          Visibility="Hidden"
+                          LoadedBehavior="Manual" 
+                          ScrubbingEnabled="True"
+                          MediaOpened="ntMediaPlayer_MediaOpened"/>
+        </Grid>
+
+
+        <Slider x:Name="posSlider"
+                Grid.Row="1"
+                Controls:SliderHelper.EnableMouseWheel="MouseHover"
+                Controls:SliderHelper.ChangeValueBy="LargeChange"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Margin="0"
+                LargeChange="10"
+                Maximum="100"
+                Minimum="0"
+                SmallChange="1"
+                Value="0" 
+                Background="White"
+                ValueChanged="posSlider_ValueChanged"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Width="30"
+                        Height="30"
+                        Margin="2.5"
+                        Command="{Binding MuteAudio}"
+                        Style="{StaticResource TransparentButton}">
+                    <iconPacks:PackIconOcticons Height="15"
+                                                Width="15"
+                                                Kind="{Binding VolumeIcon}"/>
+                </Button>
+
+                <Slider x:Name="volSlider"
+                        Grid.Column="1"
+                        Controls:SliderHelper.EnableMouseWheel="MouseHover"
+                        Controls:SliderHelper.ChangeValueBy="SmallChange"
+                        HorizontalAlignment="Stretch"
+                        Margin="10"
+                        LargeChange="0.1"
+                        Maximum="1"
+                        Minimum="0"
+                        SmallChange="0.01"
+                        Value="1" 
+                        ValueChanged="volSlider_ValueChanged"/>
+
+                <Label Content="{Binding ElementName=volSlider, Path=Value}"
+                       ContentStringFormat="{}{0:P0}"
+                       Grid.Column="2"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="5,0"/>
+            </Grid>
+
+            <Button Name="previousBtn"
+                    Grid.Column="1"
+                    Width="30"
+                    Height="30"
+                    Margin="2.5"
+                    Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Command="{Binding PreviousClip}">
+                <iconPacks:PackIconFontAwesome Width="15"
+                                               Height="15"
+                                               Kind="StepBackwardSolid"
+                                               Name="PreviousBtnIcon"/>
+            </Button>
+
+            <Button Name="pausePlayBtn"
+                    Grid.Column="2"
+                    Width="35"
+                    Height="35"
+                    Margin="2.5"
+                    Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Command="{Binding PlayPause}">
+                <iconPacks:PackIconFontAwesome Width="20"
+                                               Height="20"
+                                               Kind="PlaySolid"
+                                               Name="pausePlayBtnIcon"/>
+            </Button>
+
+            <Button Name="nextBtn"
+                    Grid.Column="3"
+                    Width="30"
+                    Height="30"
+                    Margin="2.5"
+                    Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                    Command="{Binding NextClip}">
+                <iconPacks:PackIconFontAwesome Width="15"
+                                               Height="15"
+                                               Kind="StepForwardSolid"
+                                               Name="NextBtnIcon"/>
+            </Button>
+
+            <Grid Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Name="Speed14"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="1" 
+                        Width="40"
+                        Content="1/4"
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="0.25"/>
+
+                <Button Name="Speed12"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="2" 
+                        Width="40"
+                        Content="1/2" 
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="0.5"/>
+
+                <Button Name="Speed1"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="3"
+                        Width="40"
+                        Content="1x" 
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="1"/>
+
+                <Button Name="Speed2"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="4"
+                        Width="40"
+                        Content="2x" 
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="2"/>
+
+                <Button Name="Speed4"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="5"
+                        Width="40"
+                        Content="4x" 
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="4"/>
+
+                <Button Name="Speed16"
+                        Style="{DynamicResource SquareButtonStyle}"
+                        Margin="0" 
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Grid.Column="6"
+                        Width="40"
+                        Content="16x"
+                        Command="{Binding ChangePlayerSpeed}"
+                        CommandParameter="16"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

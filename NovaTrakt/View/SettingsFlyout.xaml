@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="NovaTrakt.View.SettingsFlyout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovaTrakt.View"
+             xmlns:Controls="clr-namespace:NovaTrakt.View.Controls"
+             xmlns:Custom="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+
+        <StackPanel Orientation="Vertical">
+
+            <Label Grid.Column="0"
+                    Margin="7,10,10,0"
+                    VerticalAlignment="Center"
+                    Foreground="{DynamicResource IdealForegroundColorBrush}"
+                    FontFamily="{DynamicResource ToggleSwitchHeaderFontFamily.Win10}"
+                    FontSize="{DynamicResource ToggleSwitchHeaderFontSize.Win10}"
+                   Content="Map Display Mode"/>
+
+            <ComboBox Grid.Column="1"
+                      Margin="12,0,0,10"
+                      HorizontalAlignment="Left"
+                      SelectedValue="{Binding MapModeString}"
+                      SelectedValuePath="Content"
+                      Width="120"
+                      Height="20">
+                <ComboBoxItem Content="Road"/>
+                <ComboBoxItem Content="Aerial"/>
+                <ComboBoxItem Content="Hybrid"/>
+            </ComboBox>
+
+            <Custom:ToggleSwitch Margin="10"
+                                 Header="Use Imperial Units (Miles/MPH)"
+                                 Foreground="{DynamicResource IdealForegroundColorBrush}"
+                                 Style="{DynamicResource MahApps.Metro.Styles.ToggleSwitch.Win10}"
+                                 Grid.ColumnSpan="2"
+                                 IsChecked="{Binding MPH}"
+                                 OnLabel="Yes" 
+                                 OffLabel="No"/>
+
+        </StackPanel>
+
+
+    </Grid>
+</UserControl>

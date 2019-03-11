@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="NovaTrakt.View.Controls.AboutWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovaTrakt.View.Controls"
+             xmlns:scw="clr-namespace:MahApps.Metro.SimpleChildWindow;assembly=MahApps.Metro.SimpleChildWindow"
+             mc:Ignorable="d" 
+             d:DesignHeight="550" d:DesignWidth="300">
+
+    <scw:ChildWindow IsModal="True"
+                     IsOpen="{Binding AboutWindowShow}"
+                     HorizontalContentAlignment="Stretch"
+                     VerticalContentAlignment="Stretch"
+                     ShowTitleBar="False"
+                     CloseByEscape="True"
+                     CloseOnOverlay="True"
+                     ChildWindowHeight="550"
+                     ChildWindowWidth="300">
+
+        <scw:ChildWindow.OverlayBrush>
+            <SolidColorBrush Opacity="0.5" Color="{StaticResource Gray2}"/>
+        </scw:ChildWindow.OverlayBrush>
+
+        <StackPanel  Margin="0,20">
+            <Image Source="/NovaTrakt;component/NovaTrakt_FullLogo_Vertical.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center" MaxHeight="200"/>
+
+            <TextBlock FontSize="12"
+                           TextAlignment="Center"
+                           Margin="0,5">
+                   Version:
+                   <Run Text="{Binding DataContext.Version, RelativeSource={RelativeSource AncestorType={x:Type Window}}, Mode=OneWay}"/>
+            </TextBlock>
+
+            <TextBlock Text="For the latest information please visit:"
+                           TextAlignment="Center"
+                           Margin="0,5,0,2"/>
+            <TextBlock TextAlignment="Center">
+                    <Hyperlink NavigateUri="https://github.com/RobTrehy/Novatrakt" 
+                               Foreground="{StaticResource AccentColorBrush}"
+                               RequestNavigate="Hyperlink_RequestNavigate">
+                        https://github.com/RobTrehy/Novatrakt
+                    </Hyperlink>
+            </TextBlock>
+
+            <TextBlock TextAlignment="Center"
+                       TextWrapping="Wrap"
+                       Margin="1,10,1,0" FontWeight="Light" Padding="5">
+                NovaTrakt has been developed by Rob Trehy.
+                <LineBreak/>
+                <LineBreak/>
+                If you would like to support the author, please use the link below to donate and say thanks via PayPal.
+                <LineBreak/>
+                <LineBreak/>
+                <Hyperlink NavigateUri="http://www.paypal.me/RobTrehy"
+                           Foreground="{StaticResource AccentColorBrush}" 
+                           RequestNavigate="Hyperlink_RequestNavigate">
+                    PayPal Donation Link
+                </Hyperlink>
+            </TextBlock>
+
+            <TextBlock TextWrapping="Wrap"
+                           FontSize="10"
+                           Margin="5,20,5,0">
+                    Notice: This computer program is protected by copyright laws and international treaties. Unathorized reproduction or distribution of this program or any portion of it,
+                    may result in severe civil and criminal penalties and will be prosecuted to the maximum extent possible under the law.
+            </TextBlock>
+
+            <TextBlock Text="Copyright © 2019 PAW Soft. All Rights Reserved."
+                           FontSize="10"
+                           TextAlignment="Center"
+                           Margin="0,10"/>
+
+        </StackPanel>
+    </scw:ChildWindow>
+</UserControl>

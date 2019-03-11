@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="NovaTrakt.View.Controls.Info"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NovaTrakt.View.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <Pen x:Key="BlackPen1" Thickness="2" Brush="#FF878A9F"></Pen>
+        <LinearGradientBrush x:Key="RedWhiteBrush" StartPoint="0,0" EndPoint="0,1">
+            <LinearGradientBrush.GradientStops>
+                <GradientStop Color="Red" Offset="0"></GradientStop>
+                <GradientStop Color="Red" Offset="0.5"></GradientStop>
+                <GradientStop Color="White" Offset="0.5"></GradientStop>
+                <GradientStop Color="White" Offset="1"></GradientStop>
+            </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Border BorderBrush="#FF878A9F"
+                BorderThickness="0,0,1,0">
+            <StackPanel HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center"
+                        Margin="0">
+                <TextBlock Text="{Binding SelectedTrip.PlayData.SpeedAmount}" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           FontSize="36"/>
+                <TextBlock Text="{Binding SelectedTrip.PlayData.SpeedUnit}" 
+                           Foreground="#FF878A9F" 
+                           HorizontalAlignment="Center" 
+                           FontSize="14"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1"
+              Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Image for the dial -->
+            <Image>
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <GeometryDrawing Pen="{StaticResource BlackPen1}" >
+                                <GeometryDrawing.Geometry>
+                                    <GeometryGroup>
+                                        <EllipseGeometry RadiusX="50" 
+                                                         RadiusY="50"/>
+                                        <LineGeometry StartPoint="-50 0"
+                                                      EndPoint="50 0"/>
+                                        <LineGeometry StartPoint="0 -50"
+                                                      EndPoint="0 50"/>
+                                    </GeometryGroup>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
+
+            <!-- Image for the arrow -->
+            <Image RenderTransformOrigin=".5 .5">
+                <Image.RenderTransform>
+                    <RotateTransform Angle="{Binding SelectedTrip.PlayData.Heading}"/>
+                </Image.RenderTransform>
+                <Image.Source>
+                    <DrawingImage>
+                        <DrawingImage.Drawing>
+                            <GeometryDrawing Brush="{StaticResource RedWhiteBrush}"
+                                             Pen="{StaticResource BlackPen1}">
+                                <GeometryDrawing.Geometry>
+                                    <EllipseGeometry RadiusX="5"
+                                                     RadiusY="50"/>
+                                </GeometryDrawing.Geometry>
+                            </GeometryDrawing>
+                        </DrawingImage.Drawing>
+                    </DrawingImage>
+                </Image.Source>
+            </Image>
+
+            <TextBlock Grid.Column="1"
+                       Text="{Binding SelectedTrip.PlayData.HeadingString}"
+                       HorizontalAlignment="Center" 
+                       VerticalAlignment="Center"
+                       FontSize="22"/>
+        </Grid>
+
+
+
+        <Border Grid.Row="1"
+                Grid.ColumnSpan="2"
+                BorderBrush="#FF878A9F"
+                BorderThickness="0,1,0,0">
+            <StackPanel HorizontalAlignment="Stretch" 
+                        VerticalAlignment="Center"
+                        Margin="0">
+                <TextBlock Text="Current Clip" 
+                           Foreground="#FF878A9F" 
+                           HorizontalAlignment="Center" 
+                           FontSize="14"/>
+                <TextBlock Text="{Binding SelectedTrip.CurrentClip.FileName}"
+                           HorizontalAlignment="Center" 
+                           FontSize="20"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
