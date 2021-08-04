@@ -59,7 +59,7 @@ All notable changes to this project will be documented in [CHANGELOG.md](CHANGEL
 
 ----
 ## Installation
-Simply download the [latest setup file]([Downloads/NovaTrakt-3.1.0.19070_setup.exe](https://github.com/RobTrehy/NovaTrakt/releases/latest)) and follow the on-screen prompts.
+Simply download the [latest setup file](https://github.com/RobTrehy/NovaTrakt/releases/latest) and follow the on-screen prompts.
 
 
 ----
@@ -100,7 +100,7 @@ NovaTrakt requires an internet connection only for the display of the map.
 |[github.com/robtrehy](https://github.com/robtrehy)|
 |**[Donate](https://paypal.me/RobTrehy)**|
 
-Please see our [CONTRIBUTING](.github/CONTRIBUTING.md) guide for details.
+Please see our [CONTRIBUTING](CONTRIBUTING.md) guide for details.
 
 ----
 ## License
