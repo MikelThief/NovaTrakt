@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.0.21080] - 2021-08-04
+Fixed issue preventing GPS data from being read correctly (thanks to [matushorvath](https://github.com/matushorvath))
+
 ## [3.1.0.19070] - 2019-03-11
 First Public Release
 
 
-[Unreleased]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.1970...HEAD
+[Unreleased]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.21080...HEAD
+[3.1.0.21080]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.1970...v3.1.0.21080
 [3.1.0.19070]: https://github.com/RobTrehy/NovaTrakt/compare/a8b8bee...v3.1.0.1970
