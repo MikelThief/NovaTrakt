@@ -1,0 +1,50 @@
+name: Build NovaTrakt
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    name: Build ${{ matrix.configuration }}
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        configuration: [Release, Debug]
+
+    steps:
+    - name: Checkout sources
+      uses: actions/checkout@v2.3.4
+      
+    - name: Configure MsBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Restore NuGet packages
+      run: nuget restore Novatrakt.sln
+
+    - name: Build solution
+      run: msbuild Novatrakt.sln -m -p:Configuration=${{ matrix.configuration }}
+
+    - name: Store build results
+      uses: actions/upload-artifact@v2
+      with:
+        name: NovaTrakt-Binaries-${{ matrix.configuration }}
+        path: |
+          NovaTrakt\bin\${{ matrix.configuration }}\*.*
+        if-no-files-found: error
+
+    - name: Create setup package
+      if: ${{ matrix.configuration == 'Release' }}
+      run: iscc "Inno Setup\NovaTrakt.iss"
+
+    - name: Store setup package
+      if: ${{ matrix.configuration == 'Release' }}
+      uses: actions/upload-artifact@v2
+      with:
+        name: NovaTrakt-Setup
+        path: |
+          Inno Setup\Output\*.exe
+        if-no-files-found: error
