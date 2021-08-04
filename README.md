@@ -1,7 +1,7 @@
 ![NovaTrakt - GPS Video Player](Logos/NovaTrakt_FullLogo_Horizontal.png)
 
-![GitHub Releases](https://img.shields.io/github/downloads/RobTrehy/NovaTrakt/latest/total.svg)
-![GitHub release](https://img.shields.io/github/release/RobTrehy/NovaTrakt.svg)
+![GitHub Downloads](https://img.shields.io/github/downloads/RobTrehy/NovaTrakt/latest/total.svg)
+![GitHub Release](https://img.shields.io/github/release/RobTrehy/NovaTrakt.svg)
 
 ## Play GPS Video files from your Novatek based Dash Cam
 
@@ -59,7 +59,7 @@ All notable changes to this project will be documented in [CHANGELOG.md](CHANGEL
 
 ----
 ## Installation
-Simply download the [latest setup file](Downloads/NovaTrakt-3.1.0.19070_setup.exe) and follow the on-screen prompts.
+Simply download the [latest setup file]([Downloads/NovaTrakt-3.1.0.19070_setup.exe](https://github.com/RobTrehy/NovaTrakt/releases/latest)) and follow the on-screen prompts.
 
 
 ----
@@ -99,6 +99,8 @@ NovaTrakt requires an internet connection only for the display of the map.
 |![RobTrehy](https://avatars3.githubusercontent.com/u/13102009?s=150)|
 |[github.com/robtrehy](https://github.com/robtrehy)|
 |**[Donate](https://paypal.me/RobTrehy)**|
+
+Please see our [CONTRIBUTING](.github/CONTRIBUTING.md) guide for details.
 
 ----
 ## License
