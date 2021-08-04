@@ -14,5 +14,5 @@ First Public Release
 
 
 [Unreleased]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.21080...HEAD
-[3.1.0.19070]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.1970...v3.1.0.21080
+[3.1.0.21080]: https://github.com/RobTrehy/NovaTrakt/compare/v3.1.0.1970...v3.1.0.21080
 [3.1.0.19070]: https://github.com/RobTrehy/NovaTrakt/compare/a8b8bee...v3.1.0.1970
