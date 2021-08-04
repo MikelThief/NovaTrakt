@@ -41,6 +41,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "{#MyAppSourceFolder}NovaTrakt.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyAppSourceFolder}NovaTrakt.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyAppSourceFolder}BingGeocoder.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}ControlzEx.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}MahApps.Metro.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}MahApps.Metro.IconPacks.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -48,6 +50,7 @@ Source: "{#MyAppSourceFolder}MahApps.Metro.SimpleChildWindow.dll"; DestDir: "{ap
 Source: "{#MyAppSourceFolder}Microsoft.Maps.MapControl.WPF.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}Microsoft.WindowsAPICodePack.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}Microsoft.WindowsAPICodePack.Shell.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#MyAppSourceFolder}Newtonsoft.Json.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}Novatek.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}SharedComponents.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#MyAppSourceFolder}System.Net.Http.Extensions.dll"; DestDir: "{app}"; Flags: ignoreversion
