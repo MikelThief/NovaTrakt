@@ -302,7 +302,7 @@ namespace Novatek.Core
                         double flongitude = GPSHelpers.FixCoordinates(longitude_b, longitude);
 
                         // Create new GPSData object
-                        GPSData gps = new GPSData();
+                        GPSData gps = new GPSData(AppSettings.getBool("MPH", false));
 
                         gps.DateTime = dateTime;
                         gps.Speed = speed;
